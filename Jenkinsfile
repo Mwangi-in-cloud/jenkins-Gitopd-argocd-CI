@@ -48,7 +48,7 @@ pipeline {
                        
                        echo "updating the image tag"
                        cd gitops/manifests
-                       sed -i "s|image: cronosm4m:.*|image: ${IMAGE}:${TAG}|g" cd.yml
+                       sed -i "s|image: .*/cronosm4m/jenkargo:.*|image: ${IMAGE}:${TAG}|g" cd.yml
 
                        echo "Committing and pushing changes..."
                        cd ..
