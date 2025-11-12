@@ -10,7 +10,7 @@ pipeline {
                git branch: 'main', credentialsId: 'GIT-CREDS', url: 'https://github.com/Mwangi-in-cloud/jenkins-Gitopd-argocd-CI.git' 
             }
         }
-        stage ("building docker image") {
+        stage ("building the docker image") {
             steps {
                 sh 'docker build -t "$IMAGE:$TAG"'
             }
