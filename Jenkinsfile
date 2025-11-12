@@ -54,7 +54,7 @@ pipeline {
                        cd ..
                        git add manifests/cd.yml
                        git commit -m "Update image to ${BUILD_NUMBER}" || echo "No changes to commit"
-                       git push
+                       git push origin main
 
                     """
                 }
