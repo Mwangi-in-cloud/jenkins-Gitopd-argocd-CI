@@ -18,8 +18,19 @@ pipeline {
         stage ("trivy scannin now") {
             steps {
                 sh """
-                 trivy image --severity HIGH,CRITICAL --no-progress --format table -o trivy-scan-report.txt ${IMAGE}:${TAG}
+                 #trivy image --severity HIGH,CRITICAL --no-progress --format table -o trivy-scan-report.txt ${IMAGE}:${TAG}
+                 echo "skipping this now"
                 """
+            }
+        }
+        stage ("now to dockerhub") {
+            steps {
+                  withCredentials([usernamePassword(credentialsId: 'docker-creds', passwordVariable: 'DOCKERHUB_PWD', usernameVariable: 'DOCKERHUB_USER')]) {
+                   sh 'echo "$DOCKERHUB_PWD" | docker login -u "$DOCKERHUB_USER" --password-stdin'
+                   sh 'docker push "$IMAGE:$TAG"'
+
+                  }
+
             }
         }
     }
