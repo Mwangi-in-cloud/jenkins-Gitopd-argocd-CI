@@ -46,7 +46,7 @@ pipeline {
                        rm -rf gitops
                        git clone https://github.com/Mwangi-in-cloud/jenkins-Gitops-argocd-CD.git gitops
                        
-                       echo "updating the image tag
+                       echo "updating the image tag"
                        cd gitops/manifests
                        sed -i "s|image: ${IMAGE}:.*|image: ${IMAGE}:${TAG}|g" cd.yml
 
