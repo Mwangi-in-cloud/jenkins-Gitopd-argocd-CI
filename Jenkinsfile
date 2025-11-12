@@ -43,7 +43,7 @@ pipeline {
                        echo "https://${GIT_TOKEN}:x-oauth-basic@github.com" > ~/.git-credentials
                        
                        echo "cloning CD repository"
-                       rm- rf gitops
+                       rm -rf gitops
                        git clone https://github.com/Mwangi-in-cloud/jenkins-Gitops-argocd-CD.git gitops
                        
                        echo "updating the image tag
