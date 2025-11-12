@@ -15,5 +15,12 @@ pipeline {
                 sh 'docker build -t "$IMAGE:$TAG" .'
             }
         }
+        stage (trivy scannin now) {
+            steps {
+                sh """
+                 trivy image --severity HIGH,CRITICAL --no-progress --format table -o trivy-scan-report.txt ${IMAGE}:${TAG}
+                """
+            }
+        }
     }
 }
