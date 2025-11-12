@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        IMAGE = 'docker.io/cronosm4m/jenkargo'
-        TAG = '${env.BUILD_NUMBER}'
+        IMAGE = "docker.io/cronosm4m/jenkargo"
+        TAG = "${env.BUILD_NUMBER}"
     }
     stages {
         stage ("checking out repo") {
