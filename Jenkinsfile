@@ -41,7 +41,14 @@ pipeline {
                        git config --global user.email "jenkins@server"
                        git config --global credential.helper store  
                        echo "https://${GIT_TOKEN}:x-oauth-basic@github.com" > ~/.git-credentials
-
+                       
+                       echo "cloning CD repository"
+                       rm- rf gitops
+                       git clone https://github.com/Mwangi-in-cloud/jenkins-Gitops-argocd-CD.git gitops
+                       
+                       echo "updating the image tag
+                       cd gitops/manifests
+                       sed -i "s|image: ${IMAGE}:.*|image: ${IMAGE}:${TAG}|g" cd.yml
 
                     """
                 }
