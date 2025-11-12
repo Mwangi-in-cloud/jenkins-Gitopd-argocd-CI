@@ -50,6 +50,12 @@ pipeline {
                        cd gitops/manifests
                        sed -i "s|image: ${IMAGE}:.*|image: ${IMAGE}:${TAG}|g" cd.yml
 
+                       echo "Committing and pushing changes..."
+                       cd ..
+                       git add manifests/cd.yml
+                       git commit -m "Update image to ${BUILD_NUMBER}" || echo "No changes to commit"
+                       git push
+
                     """
                 }
             }
