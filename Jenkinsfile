@@ -3,7 +3,7 @@ pipeline {
     environment {
         IMAGE = "docker.io/cronosm4m/jenkargo"
         TAG = "${env.BUILD_NUMBER}"
-        GIT_TOKEN = credentials('repo-token')
+        GIT_TOKEN = credentials('GIT_TOKEN')
     }
     stages {
         stage ("checking out repo") {
