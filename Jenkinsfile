@@ -51,7 +51,7 @@ pipeline {
                  git checkout main
 
                  echo "Updating the image tag..."
-                sed -i "s|^\\s*image:.*|image: ${IMAGE}:${TAG}|g" manifests/cd.yml
+                sed -i "s|\\(image:\\s*\\).*cronosm4m/jentype:.*|\\1${IMAGE}:${TAG}|" manifests/cd.yml
 
                 echo "Committing and pushing changes..."
                 git add manifests/cd.yml
