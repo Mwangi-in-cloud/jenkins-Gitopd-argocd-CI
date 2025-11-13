@@ -3,7 +3,7 @@ pipeline {
     environment {
         IMAGE = "docker.io/cronosm4m/jentype"
         TAG = "${env.BUILD_NUMBER}"
-        GIT_TOKEN = credentials('GIT_TOKEN')
+        github-PAT = credentials('github-PAT')
     }
     stages {
         stage ("checking out repo") {
