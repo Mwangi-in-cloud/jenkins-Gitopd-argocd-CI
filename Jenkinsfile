@@ -34,7 +34,7 @@ pipeline {
         }
         stage ("now to CD PART") {
             steps {
-                withCredentials([string(credentialsId: 'GIT-CREDS', variable: 'GIT-CREDS')]) {
+                withCredentials([usernamePassword(credentialsId: 'github-creds', passwordVariable: 'GITHUB_PWD', usernameVariable: 'GITHUB_USERNAME')]) {
                 sh """
                   echo "Configuring Git..."
                   git config --global user.name "Mwangi-in-cloud"
