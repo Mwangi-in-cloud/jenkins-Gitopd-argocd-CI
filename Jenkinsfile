@@ -3,7 +3,7 @@ pipeline {
     environment {
         IMAGE = "docker.io/cronosm4m/jentype"
         TAG = "${env.BUILD_NUMBER}"
-        github-PAT = credentials('github-PAT')
+        GIT_TOKEN = credentials('github-PAT')
     }
     stages {
         stage ("checking out repo") {
@@ -34,7 +34,7 @@ pipeline {
         }
         stage ("now to CD PART") {
             steps {
-                withCredentials([string(credentialsId: '', variable: 'github-PAT')]) {
+                withCredentials([string(credentialsId: '', variable: 'GIT_TOKEN')]) {
                 sh """
                   echo "Configuring Git..."
                   git config --global user.name "Mwangi-in-cloud"
